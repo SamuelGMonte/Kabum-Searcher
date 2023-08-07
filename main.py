@@ -1,40 +1,32 @@
-import openpyxl
-import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from openpyxl.styles import PatternFill
+import pandas as pd
 
-url = "https://www.kabum.com.br/busca/rtx"
-r = requests.get(url)
+list_price = []
+list_name = []
+for page in range(1, 10):
+    url = "https://www.kabum.com.br/busca/rtx" + "?page_number=" + str(page)
+    get_url = requests.get(url)
+    soup = BeautifulSoup(get_url.text, "html.parser")
+    all_products = soup.find_all("span", class_ = "sc-d79c9c3f-0 hkwBHG sc-d55b419d-16 kaRfLk nameCard")
+    all_prices = soup.find_all("span", class_ = "sc-3b515ca1-2 gABrIj priceCard")
 
-soup = BeautifulSoup(r.text, "html.parser")
+    for product in all_products:
+        list_name.append(product.text)
 
-span_price = soup.find_all("span", class_="sc-3b515ca1-2 gABrIj priceCard")
+    for price in all_prices:
+        list_price.append(price.text)
+        list_price = [float(price.text.replace("R$", "").replace(".", "").replace(",", "."))]
 
-product_name = soup.find_all("span", class_="sc-d79c9c3f-0 hkwBHG sc-d55b419d-16 kaRfLk nameCard")
+    if "rtx" in ''.join(list_name).lower():
+        print("\n" + f"Mostrando resultados da página: {page}")
+        columns_data = {"Name": list_name, "Preço": list_price}
+        df = pd.DataFrame(columns_data)
+        print(df)
 
-workbook = openpyxl.load_workbook("preços.xlsx")
+    else:
+        print("\n" + f"Nenhum produto relacionado encontrado na página: {page}")
 
-columns_data = []
-
-worksheet = workbook["Shell"]
-cel
-
-products_names = []
-for products in product_name:
-    product_append = products.text
-    products_names.append(product_append)
-
-
-span_prices = []
-for span in span_price:
-    span_append = span.text
-    span_prices.append(span_append)
-
-#print (products_list)
-columns_data={"Nome": products_names, "Preço": span_prices}
-df = pd.DataFrame(columns_data)
-
-
-
+    integer_list = [int(list_filter) for list_filter in list_price if list_filter <= 1800]
+    print(integer_list)
 
