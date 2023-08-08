@@ -8,7 +8,7 @@ def generate_ascii_art(text, font="slant"):
     ascii_art = pyfiglet.figlet_format(text, font=font)
     return ascii_art
 
-print(generate_ascii_art("Kabum Search"))
+print(generate_ascii_art("Kabum Searcher"))
 
 text_input = input("insira o produto que deseja buscar: ")
 price_input = int(input("insira o valor: "))
