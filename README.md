@@ -1,6 +1,6 @@
 <h1>Kabum searcher</h1>
 
-![image](https://github.com/SamuelGMonte/Kabum-Searcher/assets/128179346/d3f19008-6e3f-40d6-9f58-994143cfc716)
+![kabum_searcher](https://github.com/SamuelGMonte/Kabum-Searcher/assets/128179346/32ab43fe-a163-4d76-827f-bdf0be2999ca)
 
 
 Para utilizar clone o repositório e rode o script principal
