@@ -5,5 +5,5 @@
 
 Para utilizar clone o repositório e rode o script principal
 
-Buscador de produtos do site da Kabum, https://www.kabum.com.br/
+Buscador de produtos do site da Kabum, https://www.kabum.com.br/.
 Este repositório tem apenas como intuíto servir de material de estudos com listas e web scrapping em python, sinta-se livre para entrar em contato 
